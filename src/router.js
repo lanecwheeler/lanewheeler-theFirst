@@ -11,46 +11,31 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: Home,
-            meta: {
-                guest: true
-            }
+            component: (Home),
         },
         {
-            path: '/profile',
-            name: 'profile',
+            path: '/projects',
+            name: 'projects',
             component: () =>
-                import('./views/Profile.vue'),
-            meta: {
-                guest: false
-            }
+                import('./views/Projects'),
         }, 
         {
             path: '/aboutme',
             name: 'aboutme',
             component: () =>
-                import('./views/AboutMe.vue'),
-            meta: {
-                guest: true
-            }
+                import('./views/AboutMe'),
         },
         {
             path: '/sign-in',
             name: 'signin',
             component: () =>
-                import('./views/Signin.vue'),
-            meta: {
-                guest: true
-            }
+                import('./views/Signin'),
         }, 
         {
             path: '/join',
             name: 'join',
             component: () =>
-                import('./views/Join.vue'),
-            meta: {
-                guest: true
-            }
+                import('./views/Join'),
         }
     ]
 });

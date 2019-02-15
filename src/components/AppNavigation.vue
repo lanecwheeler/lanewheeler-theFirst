@@ -10,7 +10,7 @@
                 <!-- <v-divider :key="`divider-${index}`"></v-divider> -->
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar app fixed dark class="transparent elevation-0">
+        <v-toolbar app fixed flat dark class="transparent">
             <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-spacer class="hidden-md-and-up"></v-spacer>
             <router-link class="my-auto" to="/" style="position: relative">
@@ -24,7 +24,7 @@
             </router-link>
             <v-spacer class="hidden-sm-and-down"></v-spacer>
             <v-btn class="hidden-sm-and-down" to="/aboutme" flat>About Me</v-btn>
-            <v-btn class="hidden-sm-and-down" to="/Profile" flat>Projects</v-btn>
+            <v-btn class="hidden-sm-and-down" to="/projects" flat>Projects</v-btn>
             <div v-if="!isAuthenticated" class="hidden-sm-and-down">
                 <!-- <v-btn flat to="/sign-in">SIGN IN</v-btn> -->
                 <v-btn flat to="/contact">Let's Talk</v-btn>
