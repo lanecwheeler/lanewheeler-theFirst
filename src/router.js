@@ -36,6 +36,12 @@ export default new Router({
             name: 'join',
             component: () =>
                 import('./views/Join'),
+        }, 
+        { 
+            path: "*", 
+            name: 'error_404',
+            component: () =>
+                import('./views/ErrorPage') 
         }
     ]
 });

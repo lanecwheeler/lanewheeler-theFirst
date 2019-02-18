@@ -17,7 +17,7 @@
                 <v-toolbar-title id="site_title">
                     <span id="a">lane_wheeler(</span>
                     <transition name="slide" mode="out-in" appear>
-                        <span :key="$route.name" class="light-blue-text" id="pageName">{{$route.name}}</span>
+                        <span :key="$route.name" class="red-text" id="pageName">{{$route.name}}</span>
                     </transition>
                     <span id="b">);</span>
                 </v-toolbar-title>
@@ -73,6 +73,9 @@ export default {
         color: #fff;
         text-decoration: none;
     }
+    .v-btn .v-btn__content .v-icon {
+        color: #B81724;
+    }
     .darken-base {
         background-color: #1c313a;
         color: #fff;
@@ -103,4 +106,13 @@ export default {
             left: auto;
         }
     }    
+    @media (max-width: 600px){
+        .v-toolbar__title{
+            font-size: 16px;
+        }
+        #site_title::before {
+            height: 28px;
+        }
+    }
+    
 </style>

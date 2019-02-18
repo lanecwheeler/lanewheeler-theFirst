@@ -1,16 +1,15 @@
 <template>
-    <v-footer dark height="auto" class="transparent" :style="footerStyles">
+    <v-footer dark height="auto" class="transparent justify-center">
         <v-card class="flex" flat tile>
-            <v-card-title class="transparent">
-               
+            <v-card-title class="transparent" style="width: 100vw;">
+                <span id="copywrite" class="hidden-xs-only">&copy;{{getYear}} —&nbsp;<strong> Lane Wheeler</strong></span>
+                <v-spacer class="hidden-xs-only"></v-spacer>
+                <span id="socialbar" class="text-xs-right text-md-center">
+                    <v-btn  v-for="(social, idx) in social" :key="idx" class="mx-3" dark icon>
+                        <a :href="social.url" target="_blank" id="icons"><v-icon size="24px">{{ social.icon }}</v-icon></a>
+                    </v-btn>
+                </span>
             </v-card-title>
-            <v-card-actions class="justify-center transparent">
-                <span>&copy;{{getYear}} —&nbsp;<strong> Lane Wheeler</strong></span>
-                <v-spacer></v-spacer>
-                <v-btn v-for="(social, idx) in social" :key="idx" class="mx-3" dark icon>
-                    <a :href="social.url" target="_blank" id="icons"><v-icon size="24px">{{ social.icon }}</v-icon></a>
-                </v-btn>
-            </v-card-actions>
         </v-card>
     </v-footer>
 </template>
@@ -35,15 +34,6 @@ export default {
         getYear(){
             let d = new Date();
             return d.getFullYear();
-        },
-        footerStyles(){
-            if(this.$route.name == 'home')
-                return {
-                    opacity: 0,
-                    pointerEvents: 'none',
-                    position: 'absolute'
-                }
-            else return { opacity : 1, pointerEvents: 'inherit'}
         }
     },
     methods: {
@@ -66,5 +56,14 @@ export default {
     #icons{
         color: #fff;
         text-decoration: none;
+    }
+    footer{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transition: opacity .5s cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+    #socialbar{
+        margin: 0 auto;
     }
 </style>

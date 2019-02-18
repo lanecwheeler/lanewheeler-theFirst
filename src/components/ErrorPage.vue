@@ -1,17 +1,15 @@
 <template>
     <v-container fluid fill-height class="home-hero" style="max-height: 100vh;" >
         <v-layout justify-center align-center column pa-5>
-            <div class="display-4 font-weight-black white--text text-xs-center hidden-xs-only">TALK NERDY TO ME</div>
-            <div class="display-3 font-weight-black white--text text-xs-center hidden-sm-and-up">TALK NERDY TO ME</div>
-            <div class="display-1 font-weight-bold white--text text-xs-center">Just a front-end dev waitin' on Skynet</div>
-            <!-- <v-icon large color="white" class="mt-5 pt-5">fa fa-arrow-alt-circle-down</v-icon> -->
+            <div class="display-4 font-weight-black white--text text-xs-center">404: Not Found</div>
+            <div class="display-1 font-weight-bold white--text text-xs-center">How did you even get here?</div>
         </v-layout>
     </v-container>
 </template>
 
 <script>
     export default {
-        name: 'HomeHero'
+        name: 'ErrorPage'
     };
 </script>
 

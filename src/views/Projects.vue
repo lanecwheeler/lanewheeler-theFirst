@@ -1,6 +1,6 @@
 <template>
     <v-container grid-list-lg fluid fill-height>
-        <v-layout row wrap justify-center align-center>
+        <v-layout class="card_wrapper" row wrap justify-center align-center>
             <v-flex xs12 sm6 md6 lg4 v-for="(item, idx) in items" :key="idx">
                 <v-card>
                     <v-responsive>
@@ -30,7 +30,6 @@ export default {
                 {projName : "Personal Site", imgSrc : require("../assets/lanewheeler_com.jpg"), description : "This is the site you're on. Woah, recursion maaaaan...", url : "localhost:8080"}
             ]
         }
-        
     },
     computed: {
         userRecipes() {
@@ -39,3 +38,9 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+    .card_wrapper{
+        padding: 60px 0;
+    }
+</style>
