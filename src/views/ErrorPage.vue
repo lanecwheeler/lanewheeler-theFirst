@@ -2,7 +2,7 @@
     <v-container fluid fill-height class="home-hero" style="max-height: 100vh;" >
         <v-layout justify-center align-center column pa-5>
             <div class="display-3 font-weight-black white--text text-xs-center">404: Not Found</div>
-            <div class="display-1 font-weight-bold white--text text-xs-center">Woah there friend. I don't know what you're doin' there...</div>
+            <div class="display-1 font-weight-bold white--text text-xs-center">How did you even get here?</div>
         </v-layout>
     </v-container>
 </template>
