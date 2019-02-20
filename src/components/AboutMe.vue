@@ -37,22 +37,7 @@
 
 <script>
 export default{
-    name: 'AboutMe',
-    data() {
-        return {
-            items: [
-                {planName : "Keto", imgSrc : "http://source.unsplash.com/hjCA3ecCXAQ", description : "The Keto diet is a high-fat, adequate-protein, low-carbohydrate diet. The diet forces the body to burn fats rather than carbohydrates by putting the body into ketosis."},
-                {planName : "Paleo", imgSrc : "http://source.unsplash.com/6S27S6pZ6o0", description : "The Paleo diet requires the sole or predominant consumption of foods presumed to have been the only foods available to or consumed by humans during the Paleolithic era."},
-                {planName : "Vegan", imgSrc : "http://source.unsplash.com/1SPu0KT-Ejg", description : "The vegan diet abstains from the use of animal products. The vegan diet does not consume meat, diary products, eggs or any all other animal-derived ingredients."}
-            ]
-        }
-    }, 
-    methods: {
-        showRecipes(plan) {
-            console.log(plan + ' clicked')
-            this.$store.dispatch('getRecipes', plan)
-        }
-    }
+    name: 'AboutMe'
 }
 </script>
 

@@ -26,17 +26,11 @@ export default new Router({
                 import('./views/AboutMe'),
         },
         {
-            path: '/sign-in',
-            name: 'signin',
+            path: '/contact',
+            name: 'contact',
             component: () =>
-                import('./views/Signin'),
-        }, 
-        {
-            path: '/join',
-            name: 'join',
-            component: () =>
-                import('./views/Join'),
-        }, 
+                import('./views/Contact')
+        },
         { 
             path: "*", 
             name: 'error_404',
