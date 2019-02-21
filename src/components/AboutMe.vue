@@ -17,7 +17,7 @@
                         <span class="headline mt-3 red-text">Second, I am a developer.</span>
                         I specialize in UI/UX development, but that certainly does not mean my 'stack' is limited to only that.
                         I am proficient with HTML, CSS, and Javascript and I make use of many tools designed to help with that work.
-                        I'm a lover of Bootstrap, an evangalist of accessibility, and am practically head over heels for good user-centric design.
+                        I'm a lover of Bootstrap, an evangelist of accessibility, and am practically head over heels for good user-centric design.
                         But I'm not just a front-end art monkey, I am also familiar with PHP, Java, C#, and can write a mean SQL statement.
                         Recently, I've also been experimenting with NodeJs (hence, this site). 
                         In short, I'm pretty dangerous with an IDE.

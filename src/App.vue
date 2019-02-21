@@ -23,10 +23,10 @@
             <span class='secret_ba'>B</span>
             <span class='secret_ba'>A</span>
         </div>
-        <div class="ryu">
+        <div class="ryu" :style="ryuStyle">
             <v-img :src="require('./assets/ryu.png')" contain height="100"></v-img>
         </div>
-        <div class="hadouken">
+        <div class="hadouken" :style="hadoukenStyle">
             <v-img :src="require('./assets/hadouken.png')" contain height="50"></v-img>
         </div>
     </v-app>
@@ -38,43 +38,49 @@ import AppFooter from '@/components/AppFooter'
 
 export default {
     name: 'App',
+    data() {
+        return {
+            ryuStyle : {},
+            hadoukenStyle : {},
+            kode : [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+            pos : 0
+        }
+    },
     components: {
         AppNavigation,
         AppFooter
     },
     computed: {
         isHome(){
-            if(this.$route.name == 'home') return true
-            else return false
+            return this.$route.name == 'home'
         }
-    }
-};
-
-// KONAMI CODE SECRET :3
-const kode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
-const length = kode.length
-var pos = 0
-document.addEventListener('keydown', function (event) {
-    // It ain't pretty, but it works. 
-    if (event.keyCode === kode[pos++]) {
-        if (length === pos) {
-            document.getElementsByClassName("ryu")[0].style.left = '0px'
-            document.getElementsByClassName("hadouken")[0].style.left = '80px'
+    },
+    methods:{
+        doSecret(){
+            this.ryuStyle.left = '0'
+            this.hadoukenStyle = {opacity : '1', left : '80px'}
             var audio = new Audio(require('./assets/hadouken.mp3'))
             audio.play()
-            setTimeout(function(){ document.getElementsByClassName("hadouken")[0].style.left = '110%'}, 350)
-            setTimeout(function(){ 
-                document.getElementsByClassName("ryu")[0].style.left = '0px'
-                document.getElementsByClassName("hadouken")[0].style.opacity = "0"
-                document.getElementsByClassName("hadouken")[0].style.left = '-50px'
-                setTimeout(function(){ document.getElementsByClassName("hadouken")[0].style.opacity = '1' }, 500)
-                document.getElementsByClassName("ryu")[0].style.left = '-100px'
+            setTimeout(() => { this.hadoukenStyle.left = '110%' }, 350)
+            setTimeout(() => { 
+                this.hadoukenStyle = {left : '-50px', opacity: '0'}
+                this.ryuStyle.left = '-100px'
             }, 1000)
-            pos = 0 
-            return false
         }
-    } else { pos = 0 }   
-}, false)
+    },
+    mounted() {
+        // KONAMI CODE SECRET :3
+        document.addEventListener('keydown', (event) => {
+            if (event.keyCode === this.kode[this.pos++]) {
+                if (this.kode.length === this.pos) {
+                    this.doSecret()
+                    this.pos = 0 
+                    return false
+                }
+            } else { this.pos = 0 }   
+        }, false)
+    }
+};
 </script>
 
 <style>
@@ -140,5 +146,6 @@ document.addEventListener('keydown', function (event) {
         z-index: 1;
         height: 50px;
         width: 50px;
+        opacity: 0;
     }
 </style>

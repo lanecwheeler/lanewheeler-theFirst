@@ -74,7 +74,7 @@ export default {
         text-decoration: none;
     }
     .v-btn .v-btn__content .v-icon {
-        color: #B81724;
+        color: #b81724;
     }
     .darken-base {
         background-color: #1c313a;

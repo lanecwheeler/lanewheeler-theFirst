@@ -48,7 +48,7 @@
                         </v-container>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn :disabled="!formIsValid" flat color="primary" type="submit">Send it!</v-btn>
+                            <v-btn :disabled="!formIsValid" @click="sendMail" flat color="primary" type="submit">Send it!</v-btn>
                         </v-card-actions>
                     </v-form>
                     <v-dialog v-model="terms" width="70%">
@@ -82,6 +82,8 @@
 </template>
 
 <script>
+import config from '../../config.js'
+
 export default {
     name: 'Contact',
     data () {
@@ -109,7 +111,6 @@ export default {
             defaultForm
         }
     },
-
     computed: {
       formIsValid () {
         return (
@@ -119,13 +120,41 @@ export default {
         )
       }
     },
-
     methods: {
-      submit () {
-        this.snackbar = true
-        // MAKE THIS SUBMIT TO SOME KIND OF SERVICE
-        this.resetForm()
-      }
+        submit () {
+            this.snackbar = true
+            // MAKE THIS SUBMIT TO SOME KIND OF SERVICE
+            this.resetForm()
+        },
+        sendMail () {
+            console.log('CONFIG')
+            console.log(config)
+            console.log('FORM')
+            console.log(this.form)
+            var API_KEY = config.mailgunKeys.API_KEY;
+            var DOMAIN = config.mailgunKeys.DOMAIN;
+            var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
+
+            console.log(API_KEY)
+
+            const data = {
+                from: this.form.name + '<' + this.form.email + '>',
+                to: 'contact@lanewheeler.com, lanecwheeler@gmail.com',
+                subject: 'New Contact Form!',
+                text: 'Message: ' + this.form.message + '\nFavorite Animal' + this.form.favoriteAnimal
+            };
+            
+            console.log(data)
+
+            mailgun.messages().send(data, (error, body) => {
+                console.log(body);
+                console.log(error)
+            });
+        },
+        resetForm () {
+            this.$refs.form.reset()
+        },
+        
     }
   
   
