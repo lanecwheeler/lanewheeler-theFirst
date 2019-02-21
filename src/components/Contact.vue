@@ -133,7 +133,8 @@ export default {
             console.log(this.form)
             var API_KEY = config.mailgunKeys.API_KEY;
             var DOMAIN = config.mailgunKeys.DOMAIN;
-            var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
+            // Gotta find somethin else man...
+            // var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
 
             console.log(API_KEY)
 
