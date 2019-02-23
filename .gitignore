@@ -64,4 +64,12 @@ typings/
 config.js
 
 # The node build
-./dist
+dist/
+
+# Firebase crap
+.firebase/
+
+# Gmail api stuff
+/src/credentials.json
+/src/index.js
+/src/token.json

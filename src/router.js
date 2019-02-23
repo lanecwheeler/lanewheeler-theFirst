@@ -11,31 +11,27 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: (Home),
+            component: Home
         },
         {
             path: '/projects',
             name: 'projects',
-            component: () =>
-                import('./views/Projects'),
-        }, 
+            component: () => import('./views/Projects')
+        },
         {
             path: '/aboutme',
             name: 'aboutme',
-            component: () =>
-                import('./views/AboutMe'),
+            component: () => import('./views/AboutMe')
         },
         {
             path: '/contact',
             name: 'contact',
-            component: () =>
-                import('./views/Contact')
+            component: () => import('./views/Contact')
         },
-        { 
-            path: "*", 
+        {
+            path: '*',
             name: 'error_404',
-            component: () =>
-                import('./views/ErrorPage') 
+            component: () => import('./views/ErrorPage')
         }
     ]
 });

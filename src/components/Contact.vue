@@ -3,21 +3,39 @@
         <v-layout class="card_wrapper" row wrap justify-center align-center>
             <v-flex xs12 sm8 my-5>
                 <v-card flat>
-                    <v-snackbar v-model="snackbar" absolute top right color="primary">
-                        <span>Message Sent!</span>
+                    <v-snackbar
+                        v-model="snackbar"
+                        absolute
+                        top
+                        right
+                        :color="snackbarColor"
+                    >
+                        <span>{{snackbarMessage}}</span>
                         <v-icon dark>fas fa-check-square</v-icon>
                     </v-snackbar>
                     <v-form ref="form" @submit.prevent="submit">
                         <v-container grid-list-xl fluid>
                             <v-layout wrap>
                                 <v-flex xs12>
-                                    <div class="display-1" id="dropALine">Drop Me A Line!</div>
+                                    <div class="display-1" id="dropALine">
+                                        Drop Me A Line!
+                                    </div>
                                 </v-flex>
                                 <v-flex xs12 sm6>
-                                    <v-text-field v-model="form.name" :rules="rules.name" label="Name" required></v-text-field>
+                                    <v-text-field
+                                        v-model="form.name"
+                                        :rules="rules.name"
+                                        label="Name"
+                                        required
+                                    ></v-text-field>
                                 </v-flex>
                                 <v-flex xs12 sm6>
-                                    <v-text-field v-model="form.email" :rules="rules.email" label="Email" required></v-text-field>
+                                    <v-text-field
+                                        v-model="form.email"
+                                        :rules="rules.email"
+                                        label="Email"
+                                        required
+                                    ></v-text-field>
                                 </v-flex>
                                 <v-flex xs12>
                                     <v-textarea v-model="form.message">
@@ -27,9 +45,15 @@
                                     </v-textarea>
                                 </v-flex>
                                 <v-flex xs12 sm6>
-                                    <v-select v-model="form.favoriteAnimal" :items="animals" :rules="rules.animal" clabel="Favorite animal">
+                                    <v-select
+                                        v-model="form.favoriteAnimal"
+                                        :items="animals"
+                                        :rules="rules.animal"
+                                        clabel="Favorite animal"
+                                    >
                                         <div slot="label">
-                                            Favorite Animal <small>(optional)</small>
+                                            Favorite Animal
+                                            <small>(optional)</small>
                                         </div>
                                     </v-select>
                                 </v-flex>
@@ -48,7 +72,14 @@
                         </v-container>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn :disabled="!formIsValid" @click="sendMail" flat color="primary" type="submit">Send it!</v-btn>
+                            <v-btn
+                                :disabled="!formIsValid"
+                                @click="sendMail"
+                                flat
+                                color="primary"
+                                type="submit"
+                                >Send it!</v-btn
+                            >
                         </v-card-actions>
                     </v-form>
                     <v-dialog v-model="terms" width="70%">
@@ -59,19 +90,31 @@
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn flat color="purple" @click="terms = false">Ok</v-btn>
+                                <v-btn
+                                    flat
+                                    color="purple"
+                                    @click="terms = false"
+                                    >Ok</v-btn
+                                >
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
                     <v-dialog v-model="conditions" width="70%">
                         <v-card>
-                            <v-card-title class="title">Conditions</v-card-title>
+                            <v-card-title class="title"
+                                >Conditions</v-card-title
+                            >
                             <v-card-text v-for="n in 5" :key="n">
                                 {{ content }}
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn flat color="purple" @click="conditions = false">Ok</v-btn>
+                                <v-btn
+                                    flat
+                                    color="purple"
+                                    @click="conditions = false"
+                                    >Ok</v-btn
+                                >
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -83,87 +126,96 @@
 
 <script>
 import config from '../../config.js'
+import axios from 'axios'
 
 export default {
     name: 'Contact',
-    data () {
+    data() {
         const defaultForm = Object.freeze({
             name: '',
             email: '',
             message: '',
             favoriteAnimal: ''
-        })
+        });
 
         return {
             form: Object.assign({}, defaultForm),
             rules: {
-                name: [val => (val || '').length > 0 || 'This field is required'],  
+                name: [
+                    val => (val || '').length > 0 || 'This field is required'
+                ],
                 email: [
-                    (val) => !!val || 'E-mail is required',
-                    (val) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val) || 'E-mail must be valid'
+                    val => !!val || 'E-mail is required',
+                    val =>
+                        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+                            val
+                        ) || 'E-mail must be valid'
                 ]
             },
             animals: ['Dog', 'Cat', 'Rabbit', 'Turtle', 'Snake', 'Other'],
             conditions: false,
             content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.`,
             snackbar: false,
+            snackbarColor: 'primary',
+            snackbarMessage: 'Message Sent!',
             terms: false,
             defaultForm
-        }
+        };
     },
     computed: {
-      formIsValid () {
-        return (
-          this.form.name &&
-          this.form.email &&
-          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.form.email)
-        )
-      }
+        formIsValid() {
+            return (
+                this.form.name &&
+                this.form.email &&
+                /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+                    this.form.email
+                )
+            );
+        }
     },
     methods: {
-        submit () {
-            this.snackbar = true
+        submit() {
+            this.snackbar = true;
             // MAKE THIS SUBMIT TO SOME KIND OF SERVICE
-            this.resetForm()
+            this.resetForm();
         },
-        sendMail () {
-            console.log('CONFIG')
-            console.log(config)
-            console.log('FORM')
-            console.log(this.form)
-            var API_KEY = config.mailgunKeys.API_KEY;
-            var DOMAIN = config.mailgunKeys.DOMAIN;
-            // Gotta find somethin else man...
-            // var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
-
-            console.log(API_KEY)
-
-            const data = {
-                from: this.form.name + '<' + this.form.email + '>',
-                to: 'contact@lanewheeler.com, lanecwheeler@gmail.com',
-                subject: 'New Contact Form!',
-                text: 'Message: ' + this.form.message + '\nFavorite Animal' + this.form.favoriteAnimal
-            };
-            
-            console.log(data)
-
-            mailgun.messages().send(data, (error, body) => {
-                console.log(body);
-                console.log(error)
+        sendMail() {
+            // I guess I'll just hit an API on joey pepperoni for now. There's too much cost involved otherwise... :/
+            axios.post('https://twitter-joey-pepperoni.appspot.com/webhook/contact',{
+                name : this.form.name,
+                email : this.form.email,
+                message : this.form.message,
+                animal : this.form.favoriteAnimal
+            }).then((response) => {
+                this.snackbarColor = 'primary'
+                this.snackbarMessage = 'Message Sent!'
+                console.log(response);
+                this.resetForm();
+                this.snackbar = true;
+            })
+            .catch((error) => {
+                this.snackbarColor = 'danger'
+                this.snackbarMessage = 'Uh-oh, something went wrong...'
+                console.log(error);
+                this.snackbar = true;
             });
+            
+            
+
+            // mailgun.messages().send(data, (error, body) => {
+            //     console.log(body);
+            //     console.log(error)
+            // });
         },
-        resetForm () {
-            this.$refs.form.reset()
-        },
-        
+        resetForm() {
+            this.$refs.form.reset();
+        }
     }
-  
-  
-}
+};
 </script>
 
 <style scoped>
-    #dropALine{
-        font-family: Roboto Mono !important;
-    }
+#dropALine {
+    font-family: Roboto Mono !important;
+}
 </style>

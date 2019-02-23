@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from 'axios'
-import firebase from 'firebase'
-import router from '@/router'
-import config from '../config'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import axios from 'axios';
+import firebase from 'firebase';
+import router from '@/router';
+import config from '../config';
 
 Vue.use(Vuex);
 
@@ -12,23 +12,23 @@ export default new Vuex.Store({
         recipes: [],
         apiUrl: 'https://api.edamam.com/search',
         user: null,
-        isAuthenticated: false, 
-        userRecipes : []
+        isAuthenticated: false,
+        userRecipes: []
     },
     mutations: {
         setRecipes(state, payload) {
-            console.log(state)
-            console.log(payload)
+            console.log(state);
+            console.log(payload);
             state.recipes = payload;
         },
         setUser(state, payload) {
-            state.user = payload
+            state.user = payload;
         },
         setIsAuthenticated(state, payload) {
-            state.isAuthenticated = payload
-        }, 
+            state.isAuthenticated = payload;
+        },
         setUserRecipes(state, payload) {
-            state.userRecipes = payload
+            state.userRecipes = payload;
         }
     },
     actions: {
@@ -45,7 +45,7 @@ export default new Vuex.Store({
                 });
                 commit('setRecipes', response.data.hits);
             } catch (error) {
-                console.log(error)
+                console.log(error);
                 commit('setRecipes', []);
             }
         },
@@ -54,14 +54,14 @@ export default new Vuex.Store({
                 .auth()
                 .createUserWithEmailAndPassword(email, password)
                 .then(user => {
-                    commit('setUser', user)
-                    commit('setIsAuthenticated', true)
-                    router.push('/about')
+                    commit('setUser', user);
+                    commit('setIsAuthenticated', true);
+                    router.push('/about');
                 })
                 .catch(() => {
-                    commit('setUser', null)
-                    commit('setIsAuthenticated', false)
-                    router.push('/')
+                    commit('setUser', null);
+                    commit('setIsAuthenticated', false);
+                    router.push('/');
                 });
         },
         userLogin({ commit }, { email, password }) {
@@ -69,14 +69,14 @@ export default new Vuex.Store({
                 .auth()
                 .signInWithEmailAndPassword(email, password)
                 .then(user => {
-                    commit('setUser', user)
-                    commit('setIsAuthenticated', true)
-                    router.push('/Profile')
+                    commit('setUser', user);
+                    commit('setIsAuthenticated', true);
+                    router.push('/Profile');
                 })
                 .catch(() => {
-                    commit('setUser', null)
-                    commit('setIsAuthenticated', false)
-                    router.push('/')
+                    commit('setUser', null);
+                    commit('setIsAuthenticated', false);
+                    router.push('/');
                 });
         },
         userSignOut({ commit }) {
@@ -95,8 +95,8 @@ export default new Vuex.Store({
                 });
         },
         addRecipe({ state }, payload) {
-            console.log(state.user.user.uid)
-            console.log(payload.recipe.label)
+            console.log(state.user.user.uid);
+            console.log(payload.recipe.label);
             firebase
                 .database()
                 .ref('users')
@@ -108,8 +108,8 @@ export default new Vuex.Store({
                 .database()
                 .ref('users/' + state.user.user.uid)
                 .once('value', snapshot => {
-                    commit('setUserRecipes', snapshot.val())
-                })
+                    commit('setUserRecipes', snapshot.val());
+                });
         }
     },
     getters: {

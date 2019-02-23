@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AboutMe from '@/components/AboutMe'
+import AboutMe from '@/components/AboutMe';
 
 export default {
     components: {
@@ -14,5 +14,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

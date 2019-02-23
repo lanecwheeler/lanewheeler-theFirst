@@ -8,17 +8,37 @@
                     </v-toolbar>
                     <v-card-text>
                         <v-form ref="form" v-model="valid" lazy-validation>
-                            <v-text-field prepend-icon="fa-user" name="email" label="Email" type="email"
-                                          v-model="email" :rules="emailRules" required>
+                            <v-text-field
+                                prepend-icon="fa-user"
+                                name="email"
+                                label="Email"
+                                type="email"
+                                v-model="email"
+                                :rules="emailRules"
+                                required
+                            >
                             </v-text-field>
-                            <v-text-field prepend-icon="fa-lock" name="password" label="Password" id="password"
-                                          type="password" required v-model="password" :rules="passwordRules">
+                            <v-text-field
+                                prepend-icon="fa-lock"
+                                name="password"
+                                label="Password"
+                                id="password"
+                                type="password"
+                                required
+                                v-model="password"
+                                :rules="passwordRules"
+                            >
                             </v-text-field>
                         </v-form>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary" :disabled="!valid" @click="submit">Login</v-btn>
+                        <v-btn
+                            color="primary"
+                            :disabled="!valid"
+                            @click="submit"
+                            >Login</v-btn
+                        >
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -59,5 +79,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
