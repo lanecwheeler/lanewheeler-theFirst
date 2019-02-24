@@ -67,7 +67,7 @@ config.js
 dist/
 
 # Firebase crap
-.firebase/
+.firebase
 
 # Gmail api stuff
 /src/credentials.json

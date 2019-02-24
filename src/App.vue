@@ -43,7 +43,6 @@
 <script>
 import AppNavigation from '@/components/AppNavigation';
 import AppFooter from '@/components/AppFooter';
-// const config = require('../config.js');
 
 export default {
     name: 'App',
