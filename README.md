@@ -1,29 +1,8 @@
 # lanewheeler
 
-## Project setup
-```
-npm install
-```
+This is just a personal site to showcase Lane Wheeler.<br>
+Completely built in VueJs with a Node backend.<br>If you're feelin frisky, do the konami code while on the site :3<br>
+```(↑ ↑ ↓ ↓ ← → ← → b a)```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Things to note: 
+> OK.gov is not live as of this moment, it's set to be pushed live to production sometime in the following week or two.
