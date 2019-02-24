@@ -1,6 +1,6 @@
 # lanewheeler
 
-This is just a personal site to showcase [Lane Wheeler](lanewheeler.com).<br>
+This is just a personal site to showcase [Lane Wheeler](https://lanewheeler.com).<br>
 Completely built in VueJs with a Node backend.<br>If you're feelin frisky, do the konami code while on the site :3<br>
 ```(↑ ↑ ↓ ↓ ← → ← → b a)```
 
