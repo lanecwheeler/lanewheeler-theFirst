@@ -50,7 +50,7 @@ export default {
                 },
                 {
                     icon: 'fab fa-linkedin',
-                    url: 'https://www.linkedin.com/in/lane-wheeler-816762a2'
+                    url: 'https://www.linkedin.com/in/lanecwheeler'
                 }
             ]
         };

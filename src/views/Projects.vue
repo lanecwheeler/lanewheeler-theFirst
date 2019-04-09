@@ -40,7 +40,7 @@ export default {
                 },
                 {
                     projName: '(COMING SOON!) the Official Website of the State of Oklahoma',
-                    imgSrc: require('../assets/ok_gov.jpg'),
+                    imgSrc: require('../assets/stateofOklahoma.jpg'),
                     description:
                         "I was the sole developer in charge of redesigning and developing the (upcoming) Ok.gov.",
                     url: 'http://www.ok.gov'
